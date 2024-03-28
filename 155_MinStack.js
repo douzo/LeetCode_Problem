@@ -36,7 +36,7 @@ minStack.getMin(); // return -2
 
 
 var MinStack = function() {
-  this.stack = []    
+  this.stack = []
 };
 
 /** 

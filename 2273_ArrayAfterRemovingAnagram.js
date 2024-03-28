@@ -1,10 +1,5 @@
 /**
  * 2273. Find Resultant Array After Removing Anagrams
-Solved
-Easy
-Topics
-Companies
-Hint
 You are given a 0-indexed string array words, where words[i] consists of lowercase English letters.
 
 In one operation, select any index i such that 0 < i < words.length and words[i - 1] and words[i] are anagrams, and delete words[i] from words. Keep performing this operation as long as you can select an index that satisfies the conditions.
@@ -40,30 +35,30 @@ No two adjacent strings in words are anagrams of each other, so no operations ar
  * @param {string[]} words
  * @return {string[]}
  */
-var removeAnagrams = function(words) {
+var removeAnagrams = function (words) {
   let newWords = [words[0]]
-  for (let i=1; i <words.length; i++) {
-      if (!isAnagram(words[i], words[i-1])) {
-          newWords.push(words[i])
-      }
+  for (let i = 1; i < words.length; i++) {
+    if (!isAnagram(words[i], words[i - 1])) {
+      newWords.push(words[i])
+    }
   }
   return newWords
 };
 
 var isAnagram = function (s, t) {
-if (s.length !== t.length) {
+  if (s.length !== t.length) {
     return false
-}
-const characterCountMap = new Map()
-for (let eachChar of s) {
+  }
+  const characterCountMap = new Map()
+  for (let eachChar of s) {
     characterCountMap.set(eachChar, (characterCountMap.get(eachChar) || 0) + 1)
-}
+  }
 
-for (let eachChar of t) {
+  for (let eachChar of t) {
     if (!characterCountMap.has(eachChar) || characterCountMap.get(eachChar) === 0) {
-        return false
+      return false
     }
     characterCountMap.set(eachChar, characterCountMap.get(eachChar) - 1)
-}
-return true
+  }
+  return true
 };
